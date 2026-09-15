@@ -7,14 +7,16 @@
 html,body,#map{height:100%;margin:0} body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#25302b}
 #map{background:#e8e4da} .top{position:absolute;z-index:1000;left:12px;right:12px;top:12px;background:rgba(255,253,248,.96);border-radius:16px;padding:12px 14px;box-shadow:0 5px 24px #0002;max-width:720px}
 .title{font-weight:800;font-size:18px} .sub{font-size:12px;color:#6d746f;margin-top:2px}
-.filters{display:flex;gap:6px;overflow-x:auto;margin-top:9px;padding-bottom:2px} .f{white-space:nowrap;border:1px solid #ddd4c7;background:white;border-radius:999px;padding:6px 9px;font-size:12px} .f.off{opacity:.35}
+.filters{display:flex;gap:7px;overflow-x:auto;margin-top:9px;padding-bottom:3px} .f{--cat:#5f6b66;--cat-bg:#f4f1eb;display:inline-flex;align-items:center;white-space:nowrap;border:2px solid var(--cat);background:var(--cat-bg);color:var(--cat);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700;transition:.16s} .f.off{opacity:.48;background:#fff;color:#727875;border-color:#b9bfbc}
 .locate{position:absolute;right:12px;bottom:32px;z-index:1000;background:#fff;border:0;border-radius:50%;width:48px;height:48px;box-shadow:0 3px 14px #0003;font-size:20px}
+.route-toggle{position:absolute;right:70px;bottom:32px;z-index:1000;height:48px;border:0;border-radius:24px;padding:0 15px;background:#294b3d;color:white;box-shadow:0 3px 14px #0003;font-size:14px;font-weight:750} .route-toggle b{display:inline-grid;place-items:center;min-width:21px;height:21px;margin-left:4px;padding:0 2px;border-radius:11px;background:#fff;color:#294b3d;font-size:12px}
+.route-box{display:none;position:fixed;z-index:1150;left:12px;right:12px;bottom:92px;max-height:46vh;overflow:auto;background:#fffdf8;border-radius:18px;padding:12px 14px;box-shadow:0 8px 34px #0004} .route-box.show{display:block}.route-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.route-head h2{font-size:18px;margin:0}.route-head button{width:30px;height:30px;border:0;border-radius:50%;background:#eee6da;font-size:18px}.route-modes{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}.route-mode{border:1px solid #d7d3ca;border-radius:10px;background:white;color:#4e5752;padding:7px 2px;font-size:12px}.route-mode.active{border-color:#294b3d;background:#294b3d;color:white;font-weight:700}.route-stops-wrap{border-top:1px solid #eee9df;margin:2px 0 8px}.route-stops-wrap summary{display:flex;justify-content:space-between;align-items:center;padding:7px 1px 5px;cursor:pointer;font-size:13px;font-weight:700}.route-stops-wrap summary small{color:#7b817e;font-size:10px;font-weight:400}.route-stops{list-style:none;max-height:118px;overflow:auto;padding:0;margin:0}.route-stops .empty{color:#7b817e;background:#f3eee5;border-radius:9px;padding:8px;font-size:12px}.route-stop{display:grid;grid-template-columns:25px 1fr auto;align-items:center;gap:7px;padding:6px 0;border-bottom:1px solid #eee9df}.route-stop .num{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#e5eee9;color:#294b3d;font-size:12px;font-weight:800}.route-stop .stop-name{font-size:12px;line-height:1.25}.stop-tools{display:flex;gap:2px}.stop-tools button{width:26px;height:26px;border:0;background:#f0ebe2;border-radius:7px;color:#59615d}.route-actions{display:grid;grid-template-columns:1.35fr 1.15fr .7fr;gap:6px}.route-actions button{border:0;border-radius:10px;padding:8px 4px;text-align:center;font-size:12px;background:#294b3d;color:white}.route-actions .secondary{background:#e9e3d8;color:#25302b}.route-actions button:disabled{opacity:.45}.route-result{display:none;margin-top:8px;padding:8px 10px;border-radius:11px;background:#eef4f0;font-size:12px;line-height:1.45}.route-result.show{display:block}.route-result.error{background:#fff0e8;color:#80472f}.external-links{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:7px}.external-links a{border-radius:9px;padding:7px 4px;text-align:center;text-decoration:none;background:#294b3d;color:white;font-weight:700}.external-links a.apple{background:#222}.route-credit{margin-top:6px;color:#7b817e;font-size:10px}.route-credit summary{cursor:pointer}.route-credit span{display:block;margin-top:3px;line-height:1.4}.route-add{grid-column:1/-1!important;background:#3e7657!important}
 .panel{position:fixed;z-index:1200;left:0;right:0;bottom:0;background:#fffdf8;border-radius:22px 22px 0 0;box-shadow:0 -5px 30px #0003;padding:18px 18px calc(18px + env(safe-area-inset-bottom));transform:translateY(110%);transition:.22s;max-height:64vh;overflow:auto}
 .panel.show{transform:translateY(0)} .panel h2{margin:0 35px 4px 0;font-size:22px} .tag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:999px;background:#eee6d9;margin:2px 4px 7px 0}
 .addr{background:#f3eee5;border-radius:12px;padding:10px;margin:8px 0;font-size:14px} .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0} .actions button,.actions a{border:0;border-radius:12px;padding:11px;text-align:center;text-decoration:none;background:#294b3d;color:white;font-size:14px} .actions .secondary{background:#e9e3d8;color:#25302b}
 .close{position:absolute;right:14px;top:14px;border:0;background:#eee6da;border-radius:50%;width:30px;height:30px}
-.leaflet-popup-content-wrapper{border-radius:12px} .legend{position:absolute;z-index:900;left:12px;bottom:26px;background:#fffdf8dd;border-radius:10px;padding:7px 9px;font-size:11px;box-shadow:0 2px 10px #0002}
-@media(min-width:850px){.top{left:20px;top:20px} .panel{left:auto;right:20px;bottom:20px;width:390px;border-radius:20px;max-height:75vh} .legend{left:20px}}
+.leaflet-popup-content-wrapper{border-radius:12px} .legend{position:absolute;z-index:900;left:12px;bottom:26px;max-width:calc(100% - 165px);background:#fffdf8dd;border-radius:10px;padding:7px 9px;font-size:11px;box-shadow:0 2px 10px #0002}
+@media(min-width:850px){.top{left:20px;top:20px} .panel{left:auto;right:20px;bottom:20px;width:390px;border-radius:20px;max-height:75vh} .legend{left:20px}.route-box{left:20px;right:auto;width:370px;bottom:92px}}
 </style></head>
 <body>
 <div id="map"></div>
@@ -22,6 +24,20 @@ html,body,#map{height:100%;margin:0} body{font-family:-apple-system,BlinkMacSyst
 <div class="sub">10/4-10/8（可延至10/9）｜点标记→复制地址/名称→打开手机导航。道路底图联网加载；收藏点数据已写入本文件。</div>
 <div class="filters" id="filters"></div></div>
 <button class="locate" onclick="locateMe()" title="定位">◎</button>
+<button class="route-toggle" id="routeToggle" onclick="toggleRoutePanel()" title="多点路线">路线 <b id="routeCount">0</b></button>
+<section class="route-box" id="routeBox" aria-label="多点路线规划">
+  <div class="route-head"><h2>多点路线规划</h2><button onclick="toggleRoutePanel(false)" aria-label="收起">−</button></div>
+  <div class="route-modes" id="routeModes">
+    <button class="route-mode active" data-mode="pedestrian" onclick="setRouteMode('pedestrian')">步行</button>
+    <button class="route-mode" data-mode="bicycle" onclick="setRouteMode('bicycle')">骑车</button>
+    <button class="route-mode" data-mode="auto" onclick="setRouteMode('auto')">开车</button>
+    <button class="route-mode" data-mode="multimodal" onclick="setRouteMode('multimodal')">公交</button>
+  </div>
+  <details class="route-stops-wrap" id="routeStopsWrap" open><summary><span id="routeStopSummary">路线地点（0）</span><small>查看 / 排序</small></summary><ol class="route-stops" id="routeStops"><li class="empty">从任意地点详情中点“加入路线”，至少选择 2 个地点。</li></ol></details>
+  <div class="route-actions"><button id="planRoute" onclick="planRoute()" disabled>计算路线</button><button class="secondary" onclick="copyRoute()">复制路线清单</button><button class="secondary" onclick="clearRoute()">清空</button></div>
+  <div class="route-result" id="routeResult"></div>
+  <details class="route-credit"><summary>路线数据说明</summary><span>页内路线使用 Valhalla / OpenStreetMap 开放数据；公交班次覆盖不足时可转外部地图继续规划。</span></details>
+</section>
 <div class="legend">提示：酒店/小店坐标若平台未公开精确经纬度，以地址邻近点表示；导航请用“复制地址/名称”。</div>
 <div class="panel" id="panel"><button class="close" onclick="closePanel()">×</button><div id="panelBody"></div></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -33,17 +49,71 @@ const map=L.map('map',{zoomControl:true}).setView([30.02,118.28],10);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(map);
 const layers={}, markers=[];
 cats.forEach(c=>{layers[c]=L.layerGroup().addTo(map);});
-function markerIcon(cat){return L.divIcon({className:'',html:`<div style="width:20px;height:20px;border-radius:50%;background:${colors[cat]||'#555'};border:3px solid white;box-shadow:0 1px 6px #0005"></div>`,iconSize:[20,20],iconAnchor:[10,10]})}
+function markerIcon(cat){return L.divIcon({className:'',html:`<div style="width:16px;height:16px;border-radius:50%;background:${colors[cat]||'#555'};border:2px solid white;box-shadow:0 1px 5px #0005"></div>`,iconSize:[16,16],iconAnchor:[8,8]})}
 pois.forEach((p,i)=>{const m=L.marker([p.lat,p.lon],{icon:markerIcon(p.cat)}).addTo(layers[p.cat]);m.on('click',()=>showPoi(i));markers.push(m);});
 const filters=document.getElementById('filters');
-cats.forEach(c=>{const b=document.createElement('button');b.className='f';b.textContent=c;b.dataset.on='1';b.onclick=()=>{if(b.dataset.on==='1'){map.removeLayer(layers[c]);b.dataset.on='0';b.classList.add('off')}else{layers[c].addTo(map);b.dataset.on='1';b.classList.remove('off')}};filters.appendChild(b);});
-function copyText(t){navigator.clipboard?.writeText(t).then(()=>alert('已复制：'+t)).catch(()=>prompt('长按复制：',t));}
+function hexToRgba(hex,alpha){const n=parseInt(hex.slice(1),16);return `rgba(${n>>16},${n>>8&255},${n&255},${alpha})`}
+function focusCategory(c){const bounds=L.latLngBounds(pois.filter(p=>p.cat===c).map(p=>[p.lat,p.lon]));if(!bounds.isValid())return;if(bounds.getNorthEast().equals(bounds.getSouthWest()))map.flyTo(bounds.getCenter(),15);else map.flyToBounds(bounds,{padding:[48,48],maxZoom:14})}
+cats.forEach(c=>{const b=document.createElement('button');b.className='f';b.textContent=c;b.style.setProperty('--cat',colors[c]);b.style.setProperty('--cat-bg',hexToRgba(colors[c],.1));b.dataset.on='1';b.onclick=()=>{if(b.dataset.on==='1'){map.removeLayer(layers[c]);b.dataset.on='0';b.classList.add('off')}else{layers[c].addTo(map);b.dataset.on='1';b.classList.remove('off');focusCategory(c)}};filters.appendChild(b);});
+function copyText(t,message){navigator.clipboard?.writeText(t).then(()=>alert(message||'已复制：'+t)).catch(()=>prompt('长按复制：',t));}
 function showPoi(i){const p=pois[i]; const q=encodeURIComponent(p.nav); const aq=encodeURIComponent(p.addr);
 document.getElementById('panelBody').innerHTML=`<h2>${p.name}</h2><span class="tag">${p.cat}</span><span class="tag">${p.area}</span><span class="tag">${p.day}</span>
 <div class="addr"><b>地址</b><br>${p.addr}</div><p>${p.note}</p>
 <div class="actions"><button onclick='copyText(${JSON.stringify(p.addr)})'>复制地址</button><button class="secondary" onclick='copyText(${JSON.stringify(p.name)})'>复制名称</button>
-<a href="https://uri.amap.com/search?keyword=${q}" target="_blank">高德搜索</a><a class="secondary" href="https://maps.apple.com/?q=${aq}" target="_blank">Apple 地图</a></div>`;
+<a href="https://uri.amap.com/search?keyword=${q}" target="_blank">高德搜索</a><a class="secondary" href="https://maps.apple.com/?q=${aq}" target="_blank">Apple 地图</a><button class="route-add" onclick="addRouteStop(${i})">＋ 加入路线</button></div>`;
 document.getElementById('panel').classList.add('show'); map.panTo([p.lat,p.lon]);}
 function closePanel(){document.getElementById('panel').classList.remove('show')}
+const routeStopLayer=L.layerGroup().addTo(map);
+let routeStops=[],routeLayer=null,routeMode='pedestrian',routeBusy=false,lastRouteSummary='';
+const routeModeNames={pedestrian:'步行',bicycle:'骑车',auto:'开车',multimodal:'公交'};
+function toggleRoutePanel(force){const box=document.getElementById('routeBox');box.classList.toggle('show',typeof force==='boolean'?force:!box.classList.contains('show'))}
+function addRouteStop(i){const p=pois[i];routeStops.push({name:p.name,lat:p.lat,lon:p.lon,addr:p.addr});document.getElementById('routeStopsWrap').open=true;renderRouteStops();closePanel();toggleRoutePanel(true);showRouteMessage(`已加入“${p.name}”`,false)}
+function renderRouteStops(){
+  const list=document.getElementById('routeStops');list.innerHTML='';routeStopLayer.clearLayers();
+  if(!routeStops.length){list.innerHTML='<li class="empty">从任意地点详情中点“加入路线”，至少选择 2 个地点。</li>'}
+  routeStops.forEach((s,i)=>{
+    const li=document.createElement('li');li.className='route-stop';
+    const num=document.createElement('span');num.className='num';num.textContent=i+1;
+    const name=document.createElement('span');name.className='stop-name';name.textContent=s.name;
+    const tools=document.createElement('span');tools.className='stop-tools';
+    [['↑',-1,'上移'],['↓',1,'下移'],['×',0,'移除']].forEach(([label,delta,title])=>{const b=document.createElement('button');b.textContent=label;b.title=title;b.onclick=()=>delta?moveRouteStop(i,delta):removeRouteStop(i);tools.appendChild(b)});
+    li.append(num,name,tools);list.appendChild(li);
+    const icon=L.divIcon({className:'',html:`<div style="display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#294b3d;color:white;border:2px solid white;box-shadow:0 1px 6px #0006;font:800 11px sans-serif">${i+1}</div>`,iconSize:[22,22],iconAnchor:[11,11]});
+    L.marker([s.lat,s.lon],{icon,zIndexOffset:800}).addTo(routeStopLayer);
+  });
+  document.getElementById('routeCount').textContent=routeStops.length;
+  document.getElementById('routeStopSummary').textContent=`路线地点（${routeStops.length}）`;
+  document.getElementById('planRoute').disabled=routeStops.length<2||routeBusy;
+}
+function moveRouteStop(i,delta){const j=i+delta;if(j<0||j>=routeStops.length)return;[routeStops[i],routeStops[j]]=[routeStops[j],routeStops[i]];clearDrawnRoute();renderRouteStops();showRouteMessage('顺序已调整，请重新计算路线。',false)}
+function removeRouteStop(i){routeStops.splice(i,1);clearDrawnRoute();renderRouteStops();showRouteMessage(routeStops.length?'地点已移除，请重新计算路线。':'',false)}
+function clearDrawnRoute(){lastRouteSummary='';if(routeLayer){map.removeLayer(routeLayer);routeLayer=null}}
+function clearRoute(){routeStops=[];clearDrawnRoute();renderRouteStops();showRouteMessage('',false)}
+function setRouteMode(mode){routeMode=mode;document.querySelectorAll('.route-mode').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));clearDrawnRoute();if(routeStops.length>1)showRouteMessage(`已切换为${routeModeNames[mode]}，请重新计算。`,false)}
+function showRouteMessage(html,isError){const el=document.getElementById('routeResult');el.innerHTML=html;el.classList.toggle('show',!!html);el.classList.toggle('error',!!isError)}
+function decodeValhallaShape(encoded){let index=0,lat=0,lon=0,coords=[];while(index<encoded.length){let b,shift=0,result=0;do{b=encoded.charCodeAt(index++)-63;result|=(b&31)<<shift;shift+=5}while(b>=32);lat+=(result&1)?~(result>>1):(result>>1);shift=0;result=0;do{b=encoded.charCodeAt(index++)-63;result|=(b&31)<<shift;shift+=5}while(b>=32);lon+=(result&1)?~(result>>1):(result>>1);coords.push([lat/1e6,lon/1e6])}return coords}
+function formatDuration(seconds){const mins=Math.max(1,Math.round(seconds/60));return mins<60?`${mins} 分钟`:`${Math.floor(mins/60)} 小时${mins%60?` ${mins%60} 分`:''}`}
+function formatDistance(km){return km<10?`${km.toFixed(1)} 公里`:`${Math.round(km)} 公里`}
+async function planRoute(){
+  if(routeBusy||routeStops.length<2)return;routeBusy=true;const btn=document.getElementById('planRoute');btn.disabled=true;btn.textContent='计算中…';showRouteMessage('正在沿实际道路计算，请稍候…',false);
+  const payload={locations:routeStops.map(s=>({lat:s.lat,lon:s.lon})),costing:routeMode,units:'kilometers',language:'zh-CN'};
+  try{
+    const res=await fetch('https://valhalla1.openstreetmap.de/route',{method:'POST',headers:{'Content-Type':'application/json','X-Client-Id':'rui2190.github.io/huizhou-trip-2026'},body:JSON.stringify(payload)});
+    const data=await res.json();if(!res.ok||!data.trip)throw new Error(data.error||data.status_message||'路线服务暂时不可用');
+    const coords=data.trip.legs.flatMap((leg,i)=>{const points=decodeValhallaShape(leg.shape);return i?points.slice(1):points});
+    clearDrawnRoute();routeLayer=L.polyline(coords,{color:'#1769aa',weight:6,opacity:.82,lineJoin:'round'}).addTo(map);map.fitBounds(routeLayer.getBounds(),{padding:[42,42]});
+    const s=data.trip.summary;lastRouteSummary=`${routeModeNames[routeMode]}路线｜${formatDistance(s.length)}｜约 ${formatDuration(s.time)}`;document.getElementById('routeStopsWrap').open=false;showRouteMessage(`<b>${routeModeNames[routeMode]}路线：${formatDistance(s.length)} · 约 ${formatDuration(s.time)}</b><br>${routeStops.length} 个地点，按当前顺序规划。${externalRouteLinks()}`,false);
+  }catch(err){
+    const transit=routeMode==='multimodal';showRouteMessage(`${transit?'当地开放公交时刻数据暂未覆盖，无法在页内生成可靠公交线路。':'路线暂时无法计算：'+err.message}${externalRouteLinks()}`,true);
+  }finally{routeBusy=false;btn.textContent='计算路线';btn.disabled=routeStops.length<2}
+}
+function outOfChina(lon,lat){return lon<72.004||lon>137.8347||lat<0.8293||lat>55.8271}
+function transformLat(x,y){return -100+2*x+3*y+.2*y*y+.1*x*y+.2*Math.sqrt(Math.abs(x))+(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3+(20*Math.sin(y*Math.PI)+40*Math.sin(y/3*Math.PI))*2/3+(160*Math.sin(y/12*Math.PI)+320*Math.sin(y*Math.PI/30))*2/3}
+function transformLon(x,y){return 300+x+2*y+.1*x*x+.1*x*y+.1*Math.sqrt(Math.abs(x))+(20*Math.sin(6*x*Math.PI)+20*Math.sin(2*x*Math.PI))*2/3+(20*Math.sin(x*Math.PI)+40*Math.sin(x/3*Math.PI))*2/3+(150*Math.sin(x/12*Math.PI)+300*Math.sin(x/30*Math.PI))*2/3}
+function wgs84ToGcj02(lon,lat){if(outOfChina(lon,lat))return[lon,lat];const a=6378245,ee=.006693421622965943,dLat=transformLat(lon-105,lat-35),dLon=transformLon(lon-105,lat-35),rad=lat/180*Math.PI,magic=1-ee*Math.sin(rad)**2,sqrt=Math.sqrt(magic);return[lon+dLon*180/(a/sqrt*Math.cos(rad)*Math.PI),lat+dLat*180/(a*(1-ee)/(magic*sqrt)*Math.PI)]}
+function buildAmapRouteUrl(){if(routeStops.length<2)return'https://uri.amap.com';const modeMap={pedestrian:'walk',bicycle:'ride',auto:'car',multimodal:'bus'},fmt=s=>{const [lon,lat]=wgs84ToGcj02(s.lon,s.lat);return`${lon.toFixed(6)},${lat.toFixed(6)},${s.name}`},params=new URLSearchParams({from:fmt(routeStops[0]),to:fmt(routeStops[routeStops.length-1]),mode:modeMap[routeMode],policy:'0',src:'huizhou-trip-2026',callnative:'1'});if(routeMode==='auto'&&routeStops.length>2)params.set('via',fmt(routeStops[1]));return`https://uri.amap.com/navigation?${params}`}
+function buildAppleRouteUrl(){if(routeStops.length<2)return'https://maps.apple.com';const start=routeStops[0],end=routeStops[routeStops.length-1],modeMap={pedestrian:'w',auto:'d',multimodal:'r'},params=new URLSearchParams({saddr:`${start.lat},${start.lon}`,daddr:`${end.lat},${end.lon}`});if(modeMap[routeMode])params.set('dirflg',modeMap[routeMode]);return`https://maps.apple.com/?${params}`}
+function externalRouteLinks(){return`<div class="external-links"><a href="${buildAmapRouteUrl()}" target="_blank" rel="noopener">高德继续</a><a class="apple" href="${buildAppleRouteUrl()}" target="_blank" rel="noopener">Apple 地图继续</a></div>`}
+function copyRoute(){if(!routeStops.length)return alert('请先加入路线地点');const text=`${lastRouteSummary||routeModeNames[routeMode]+'路线'}\n\n地点顺序：\n`+routeStops.map((s,i)=>`${i+1}. ${s.name}\n${s.addr}`).join('\n\n')+`\n\n旅行地图：${location.href}`;copyText(text,'已复制路线清单（含出行方式、地点顺序、地址和地图链接）')}
 function locateMe(){if(!navigator.geolocation) return alert('浏览器不支持定位');navigator.geolocation.getCurrentPosition(pos=>{const ll=[pos.coords.latitude,pos.coords.longitude];L.circleMarker(ll,{radius:8,color:'#1769aa',fillOpacity:.8}).addTo(map).bindPopup('你的位置').openPopup();map.setView(ll,15)},()=>alert('无法获取定位，请检查浏览器定位权限'));}
 </script></body></html>
