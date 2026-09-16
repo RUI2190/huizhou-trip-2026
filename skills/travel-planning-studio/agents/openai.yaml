@@ -1,0 +1,4 @@
+interface:
+  display_name: "旅行方案工作室"
+  short_description: "从需求研究到攻略、交互地图、PDF与发布验收的一体化旅行方案"
+  default_prompt: "Use $travel-planning-studio to create a personalized, evidence-backed travel package with an itinerary, interactive map, and PDF guide."
