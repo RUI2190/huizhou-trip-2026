@@ -1,0 +1,52 @@
+{
+  "trip": {
+    "destination": "示例城市",
+    "timezone": "Asia/Shanghai",
+    "start_date": "2026-10-01",
+    "end_date": "2026-10-02",
+    "party": "2 adults"
+  },
+  "pois": [
+    {
+      "id": "sample-museum",
+      "name": "示例博物馆",
+      "category": "attraction",
+      "area": "中心城区",
+      "address": "示例路 1 号",
+      "lat": 31.2304,
+      "lon": 121.4737,
+      "coordinate_system": "gcj02",
+      "coordinate_precision": "example_only",
+      "status": "candidate",
+      "reason": "演示一个完整且可验证的 POI 数据对象。",
+      "sources": [
+        {
+          "url": "https://example.org/travel-source",
+          "checked_at": "2026-09-16",
+          "claims": [
+            "This is placeholder evidence for schema demonstration only."
+          ],
+          "confidence": "low"
+        }
+      ]
+    }
+  ],
+  "days": [
+    {
+      "id": "day-1",
+      "date": "2026-10-01",
+      "title": "中心城区",
+      "stops": [
+        {
+          "poi_id": "sample-museum",
+          "window": "10:00–12:00",
+          "optional": false
+        }
+      ],
+      "fallbacks": []
+    }
+  ],
+  "assumptions": [
+    "All names, coordinates, dates, and sources in this file are schema examples, not travel recommendations."
+  ]
+}
