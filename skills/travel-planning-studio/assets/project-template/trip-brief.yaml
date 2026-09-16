@@ -1,0 +1,48 @@
+project:
+  name: ""
+  owner: ""
+  output_language: "zh-CN"
+
+travel:
+  destination: ""
+  start_date: ""
+  end_date: ""
+  timezone: ""
+  travelers:
+    count: null
+    party_type: ""
+  traveler_groups: []
+  arrival_segments: []
+  departure_options: []
+
+constraints:
+  booked: []
+  hard: []
+  strong: []
+  flexible: []
+  unknown: []
+
+decisions:
+  selected_trip_shape: ""
+  log: []
+
+open_branches: []
+recheck_schedule: []
+
+preferences:
+  pace: "moderate"
+  budget: "mid-range"
+  transport: []
+  interests: []
+  must_do: []
+  must_avoid: []
+  dietary_requirements: "not provided"
+  accessibility_requirements: "not provided"
+
+deliverables:
+  itinerary: true
+  interactive_map: false
+  pdf_guide: false
+  public_hosting: false
+
+assumptions: []
