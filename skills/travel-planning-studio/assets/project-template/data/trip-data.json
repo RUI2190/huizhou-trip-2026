@@ -1,0 +1,11 @@
+{
+  "trip": {
+    "destination": "REPLACE_ME",
+    "timezone": "REPLACE_ME",
+    "start_date": "",
+    "end_date": ""
+  },
+  "pois": [],
+  "days": [],
+  "assumptions": []
+}
